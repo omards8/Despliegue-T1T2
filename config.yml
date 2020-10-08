@@ -1,0 +1,21 @@
+version: 2.1
+
+jobs:
+  build:
+    docker:
+      - image: circleci/ruby:2.6.3-stretch-node
+      
+    steps:
+      - checkout
+      
+      - run:
+          name: Dependencias
+          command: bundle install
+          
+      - run:
+          name: Compilar el sitio
+          command: bundle exec jekyll build
+
+      - run:
+          print: Imprime la fecha actual
+          command: date
